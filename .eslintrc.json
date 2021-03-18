@@ -1,0 +1,52 @@
+{
+  "env": {
+    "browser": false,
+    "commonjs": true,
+    "es6": true
+  },
+  "plugins": ["prettier", "extra-rules","import", "jest", "security"],
+  "extends": ["airbnb-base", "prettier", "plugin:import/errors", "plugin:import/warnings", "plugin:security/recommended"],
+  "globals": {},
+  "parserOptions": {
+    "ecmaVersion": 2018
+  },
+  "rules": {
+    "no-unused-expressions":["error", {"allowShortCircuit":true}],
+    "max-params":["error", {"max":7}],
+    "max-statements":["error",{"max":100}],
+    "max-lines":["error", {"max":1000}],
+    "max-len":0,
+    "complexity":["error", {"max":10}],
+    "object-shorthand":["warn", "properties"],
+    "no-restricted-syntax":["error", "LabeledStatement", "WithStatement"],
+    "prettier/prettier":"error",
+    "extra-rules/no-commented-out-code":"error",
+    "array-callback-return":"error",
+    "no-undef":"error",
+    "prefer-rest-params":"off",
+    "import/no-extraneous-dependencies":"off",
+    "class-methods-use-this":"off",
+    "linebreak-style":"off",
+    "jest/no-disabled-tests":"warn",
+    "jest/no-focused-tests":"error",
+    "jest/no-identical-title":"error",
+    "jest/prefer-to-have-length":"error",
+    "jest/valid-expect":"error"
+  },
+  "overrides": [
+    {
+      "files":["**/*.test.js", "**/*.spec.js"],
+      "rules": {
+        "import/no-extraneous-dependencies":"off",
+        "no-console":"off"
+      }
+    },
+    {
+      "files":["**/*.test.js", "**/*.spec.js"],
+      "env": {
+        "jest/globals":true
+      },
+      "rules": {}
+    }
+  ]
+}

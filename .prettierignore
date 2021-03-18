@@ -1,0 +1,7 @@
+bin/
+coverage/
+node_modules/
+dist/
+build/
+.vscode/
+.history/
