@@ -1,7 +1,6 @@
-const express = require('express');
 const got = require('got');
 
-const router = express.Router();
+const { createRouteConfig } = require('../utils/app-config');
 
 const sessionValidationMiddleware = (req, res, next) => {
   try {
@@ -42,25 +41,29 @@ const asyncServiceMiddleware = async (req, res, next) => {
   }
 };
 
-/* GET users listing. */
-router.get(
-  '/',
-  sessionValidationMiddleware,
-  dataValidationMiddleware,
-  asyncServiceMiddleware,
-  (req, res, next) => {
-    try {
-      const { isDataValid, isSessionValid, serviceResponse } = res.locals;
-      if (isDataValid && isSessionValid) {
-        res.send(serviceResponse);
-      } else {
-        const error = { message: 'session or data is not valid' };
-        throw error;
-      }
-    } catch (error) {
-      next(error);
+const userController = (req, res, next) => {
+  try {
+    const { isDataValid, isSessionValid, serviceResponse } = res.locals;
+    if (isDataValid && isSessionValid) {
+      res.send(serviceResponse);
+    } else {
+      const error = { message: 'session or data is not valid' };
+      throw error;
     }
+  } catch (error) {
+    next(error);
   }
-);
+};
+
+const router = createRouteConfig({
+  path: '/',
+  middlewares: [
+    sessionValidationMiddleware,
+    dataValidationMiddleware,
+    asyncServiceMiddleware,
+  ],
+  method: 'GET',
+  controller: userController,
+});
 
 module.exports = router;
