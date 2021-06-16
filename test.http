@@ -1,0 +1,7 @@
+### Request 1
+POST http://localhost:3000/products
+
+{}
+
+### Request 2
+GET http://localhost:3000/products

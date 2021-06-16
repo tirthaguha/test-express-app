@@ -4,18 +4,20 @@
   "private": true,
   "scripts": {
     "start": "node ./bin/www",
-    "nodemon": "nodemon ./bin/www --watch src",
+    "nodemon": "CHOKIDAR_USEPOLLING=true nodemon ./bin/www --watch src",
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "cookie-parser": "~1.4.4",
+    "@rapidcode/app-config": "file:../rapidcode/packages/app-config",
+    "@rapidcode/logger": "file:../rapidcode/packages/logger",
+    "@rapidcode/middleware-factory": "file:../rapidcode/packages/middleware-factory",
+    "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
     "debug": "~2.6.9",
     "dotenv": "^8.2.0",
-    "express": "~4.16.1",
     "got": "^11.8.2",
     "helmet": "^4.4.1",
-    "morgan": "~1.9.1",
+    "morgan": "^1.10.0",
     "nocache": "^2.1.0"
   },
   "devDependencies": {

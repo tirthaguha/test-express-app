@@ -1,8 +1,11 @@
-const { createRouteConfig } = require('@rapidcode/app-config');
+const { RouteBuilder } = require('@rapidcode/app-config');
 const { createAsyncMiddleware } = require('@rapidcode/middleware-factory');
+
 const sessionValidationMiddleware = require('./middlewares/sessionValidationMiddleware');
 const dataValidationMiddleware = require('./middlewares/dataValidationMiddleware');
 const dataService = require('./middlewares/dataService');
+
+const routeBuilder = new RouteBuilder();
 
 const asyncServiceMiddleware = createAsyncMiddleware({ func: dataService });
 
@@ -30,16 +33,30 @@ const userController = (req, res, next) => {
   }
 };
 
-const router = createRouteConfig({
-  path: '/',
-  middlewares: [
+const routeBuilder2 = new RouteBuilder();
+
+let route = routeBuilder
+  .setPath('/')
+  .setMethod('GET')
+  .setMiddlewares([
     sessionValidationMiddleware,
     dataValidationMiddleware,
     asyncServiceMiddleware,
     anotherAsyncMiddleware,
-  ],
-  method: 'GET',
-  controller: userController,
-});
+  ])
+  .setController(userController)
+  .build();
 
-module.exports = router;
+route = routeBuilder2
+  .setPath('/')
+  .setMethod('POST')
+  .setMiddlewares([
+    sessionValidationMiddleware,
+    dataValidationMiddleware,
+    asyncServiceMiddleware,
+    anotherAsyncMiddleware,
+  ])
+  .setRouter(route)
+  .setController(userController)
+  .build();
+module.exports = route;
