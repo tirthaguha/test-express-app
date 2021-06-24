@@ -21,9 +21,9 @@ const anotherAsyncMiddleware = async (req, res, next) => {
 
 const userController = (req, res, next) => {
   try {
-    const { isDataValid, isSessionValid, gotRequesterResponse } = res.locals;
+    const { isDataValid, isSessionValid, dataServiceResponse } = res.locals;
     if (isDataValid && isSessionValid) {
-      res.send(gotRequesterResponse);
+      res.send(dataServiceResponse);
     } else {
       const error = { message: 'session or data is not valid' };
       throw error;

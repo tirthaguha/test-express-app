@@ -21,9 +21,11 @@ app.use(cookieParser());
 
 registerRouteWithApp(
   app,
-  [{ path: '/products', router: productRouter }],
-  false
+  [
+    { path: '/products', router: productRouter },
+    { path: '/users', router: usersRouter },
+  ],
+  true
 );
-registerRouteWithApp(app, [{ path: '/users', router: usersRouter }], true);
 
 module.exports = app;

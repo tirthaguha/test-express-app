@@ -1,7 +1,10 @@
 ### Request 1
+GET http://localhost:3000/users
+
+### Request 2
 POST http://localhost:3000/products
 
 {}
 
-### Request 2
+### Request 3
 GET http://localhost:3000/products
