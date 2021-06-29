@@ -1,5 +1,5 @@
-const { RouteBuilder } = require('@rapidcode/app-config');
-const { createAsyncMiddleware } = require('@rapidcode/middleware-factory');
+const { RouteBuilder } = require('@rapidcode/route');
+const { createAsyncMiddleware } = require('@rapidcode/middleware');
 
 const sessionValidationMiddleware = require('./middlewares/sessionValidationMiddleware');
 const dataValidationMiddleware = require('./middlewares/dataValidationMiddleware');

@@ -1,5 +1,5 @@
-const { createRouteConfig } = require('@rapidcode/app-config');
-const { createAsyncMiddleware } = require('@rapidcode/middleware-factory');
+const { RouteCreator } = require('@rapidcode/route');
+const { createAsyncMiddleware } = require('@rapidcode/middleware');
 const sessionValidationMiddleware = require('./middlewares/sessionValidationMiddleware');
 const dataValidationMiddleware = require('./middlewares/dataValidationMiddleware');
 const dataService = require('./middlewares/dataService');
@@ -30,7 +30,7 @@ const userController = (req, res, next) => {
   }
 };
 
-const router = createRouteConfig({
+const router = RouteCreator({
   path: '/',
   middlewares: [
     sessionValidationMiddleware,

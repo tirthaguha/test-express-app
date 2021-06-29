@@ -8,12 +8,12 @@
     "lint": "eslint src/**"
   },
   "dependencies": {
-    "@rapidcode/app-config": "file:../rapidcode/packages/app-config",
-    "@rapidcode/logger": "file:../rapidcode/packages/logger",
-    "@rapidcode/middleware-factory": "file:../rapidcode/packages/middleware-factory",
+    "@rapidcode/app": "^0.1.3",
+    "@rapidcode/logger": "^0.1.3",
+    "@rapidcode/middleware": "^0.1.3",
+    "@rapidcode/route": "^0.1.3",
     "cookie-parser": "^1.4.5",
     "cors": "^2.8.5",
-    "debug": "~2.6.9",
     "dotenv": "^8.2.0",
     "got": "^11.8.2",
     "helmet": "^4.4.1",

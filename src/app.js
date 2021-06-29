@@ -7,25 +7,21 @@ const logger = require('morgan');
 const nocache = require('nocache');
 const helmet = require('helmet');
 const cors = require('cors');
-const { appSetup, registerRouteWithApp } = require('@rapidcode/app-config');
+const { createApp, registerMultipleRoutes } = require('@rapidcode/app');
 
 const usersRouter = require('./routes/users');
 const productRouter = require('./routes/products');
 
-const app = appSetup();
+const app = createApp();
 app.use(logger('dev'));
 app.use(cors());
 app.use(nocache());
 app.use(helmet());
 app.use(cookieParser());
 
-registerRouteWithApp(
-  app,
-  [
-    { path: '/products', router: productRouter },
-    { path: '/users', router: usersRouter },
-  ],
-  true
-);
+registerMultipleRoutes(app, [
+  { path: '/products', router: productRouter },
+  { path: '/users', router: usersRouter },
+]);
 
 module.exports = app;
