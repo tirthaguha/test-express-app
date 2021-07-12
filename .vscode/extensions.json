@@ -1,0 +1,13 @@
+{
+  "recommendations": [
+    "wmaurer.change-case",
+    "streetsidesoftware.code-spell-checker",
+    "editorconfig.editorconfig",
+    "dbaeumer.vscode-eslint",
+    "eamodio.gitlens",
+    "wix.vscode-import-cost",
+    "christian-kohler.npm-intellisense",
+    "esbenp.prettier-vscode",
+    "humao.rest-client"
+  ]
+}
